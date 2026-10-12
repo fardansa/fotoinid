@@ -1,0 +1,67 @@
+---
+const facts = [
+  { label: 'Kualitas Gambar', value: 'Resolusi Tinggi (Original)' },
+  { label: 'Waktu Pengerjaan', value: '2 - 4 Hari Kerja' },
+  { label: 'Metode Pengiriman', value: 'Private Cloud Gallery (Drive)' },
+  { label: 'Konsultasi Konsep', value: 'Gratis & Fleksibel' },
+];
+---
+
+<section id="about" class="py-24 bg-[#f6f4f0] border-b border-[#d8d4db]">
+  <div class="max-w-[1240px] mx-auto px-6 md:px-10">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      <!-- Left Column: Title & Mission -->
+      <div class="lg:col-span-6">
+        <div class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#773be8] mb-3 flex items-center gap-2">
+          <span>04 — Tentang Foto.in.id</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ee4ca0]"></span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-[#211f24] leading-[1.05]">
+          Fotografi yang memberi ruang pada cerita.
+        </h2>
+        <p class="mt-6 text-[#5e5962] text-base leading-relaxed">
+          <strong>foto.in.id</strong> lahir dari semangat untuk mengabadikan setiap pencapaian, perjuangan, dan dinamika manusia ke dalam bingkai visual yang bermakna. Kami percaya bahwa foto bukan sekadar pose kaku di depan lensa, melainkan rekaman emosi yang dapat dikenang selamanya.
+        </p>
+        <p class="mt-4 text-[#5e5962] text-base leading-relaxed">
+          Dari wisuda kelulusan mahasiswa, dentuman panggung festival, hingga ketangkasan seni bela diri di bawah langit malam — kami hadir dengan pendekatan profesional, ramah, dan penuh dedikasi.
+        </p>
+      </div>
+
+      <!-- Right Column: Key Facts & Guarantees -->
+      <div class="lg:col-span-6 bg-[#fffefa] p-8 md:p-10 rounded-3xl border border-[#d8d4db] shadow-sm">
+        <h3 class="text-xl font-bold text-[#211f24] tracking-tight mb-6 flex items-center justify-between">
+          <span>Komitmen Layanan</span>
+          <span class="text-xs font-mono font-normal text-[#773be8] bg-[#eee8f8] px-3 py-1 rounded-full">Standar Foto.in.id</span>
+        </h3>
+
+        <!-- Fact List -->
+        <div class="divide-y divide-[#e9e6ec]">
+          {facts.map((item) => (
+            <div class="py-4 flex justify-between items-center text-sm">
+              <span class="font-medium text-[#211f24]">{item.label}</span>
+              <span class="font-semibold text-[#773be8] text-right">{item.value}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="mt-8 p-5 rounded-2xl bg-gradient-to-br from-[#f8f5fc] to-[#f0ebf8] border border-[#d8cee5]">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">✨</span>
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-[#773be8]">Tone & Color Grade Autentik</h4>
+              <p class="text-xs text-[#5e5962] mt-1 leading-relaxed">
+                Setiap foto dikurasi dan diselaraskan secara teliti untuk menghasilkan warna yang hangat, tajam, dan tidak lekang oleh waktu.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

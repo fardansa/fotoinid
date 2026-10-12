@@ -1,0 +1,145 @@
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Generated 0ms","label":"types","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"Port 4321 is in use, trying another one...","label":"vite","level":"info"}
+{"message":" astro  v7.3.8 ready in 297 ms\n┃ Local    http://localhost:4322/\n┃ Network  use --host to expose","label":"SKIP_FORMAT","level":"info"}
+{"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[200] HEAD / 26ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] / 25ms","label":null,"level":"info"}
+{"message":"[404] /apple-touch-icon-precomposed.png 5ms","label":null,"level":"info"}
+{"message":"[404] /apple-touch-icon.png 1ms","label":null,"level":"info"}
+{"message":"[200] / 25ms","label":null,"level":"info"}
+{"message":"[200] / 6ms","label":null,"level":"info"}
+{"message":"[200] / 7ms","label":null,"level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"[200] HEAD / 31ms","label":null,"level":"info"}
+{"message":"[200] / 17ms","label":null,"level":"info"}
+{"message":"dependencies optimized: gsap, gsap/ScrollTrigger, lenis","label":"vite","level":"info"}
+{"message":"[200] / 11ms","label":null,"level":"info"}
+{"message":"Internal server error: No script at index 0\n      at LoadPluginContext.handler (file:///Users/macbook/Folder/Tugas%20Kuliah/semester%205/kewirausahaan/fotoinid/node_modules/astro/dist/vite-plugin-astro/index.js:163:15)\n      at EnvironmentPluginContainer.load (file:///Users/macbook/Folder/Tugas%20Kuliah/semester%205/kewirausahaan/fotoinid/node_modules/vite/dist/node/chunks/node.js:8503:56)\n      at async loadAndTransform (file:///Users/macbook/Folder/Tugas%20Kuliah/semester%205/kewirausahaan/fotoinid/node_modules/vite/dist/node/chunks/node.js:20137:21)","label":"vite","level":"error"}
+{"message":"[200] / 13ms","label":null,"level":"info"}
+{"message":"[200] / 22ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 28ms","label":null,"level":"info"}
+{"message":"src/components/Feature.astro","label":"watch","level":"info"}
+{"message":"[200] / 22ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 24ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 18ms","label":null,"level":"info"}
+{"message":"src/scripts/animations.ts","label":"watch","level":"info"}
+{"message":"[200] / 10ms","label":null,"level":"info"}
+{"message":"src/components/Gallery.astro","label":"watch","level":"info"}
+{"message":"[200] / 21ms","label":null,"level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"transport was disconnected, cannot call \"fetchModule\"\n  Stack trace:\n    at /Users/macbook/Folder/Tugas Kuliah/semester 5/kewirausahaan/fotoinid/Users/macbook/Folder/Tugas Kuliah/semester 5/kewirausahaan/fotoinid/node_modules/vite/dist/node/module-runner.js:556:14\n    [...] See full stack trace in the browser, or rerun with --verbose.","label":null,"level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"[200] HEAD / 21ms","label":null,"level":"info"}
+{"message":"[200] / 14ms","label":null,"level":"info"}
+{"message":"[200] / 11ms","label":null,"level":"info"}
+{"message":"[200] / 5ms","label":null,"level":"info"}
+{"message":"src/components/Header.astro","label":"watch","level":"info"}
+{"message":"[200] / 26ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 21ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 10ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 24ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 27ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 22ms","label":null,"level":"info"}
+{"message":"src/components/Gallery.astro","label":"watch","level":"info"}
+{"message":"[200] / 28ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 7ms","label":null,"level":"info"}
+{"message":"src/components/Gallery.astro","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 23ms","label":null,"level":"info"}
+{"message":"[200] / 13ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 29ms","label":null,"level":"info"}
+{"message":"src/components/Gallery.astro","label":"watch","level":"info"}
+{"message":"[200] / 26ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 7ms","label":null,"level":"info"}
+{"message":"[200] / 22ms","label":null,"level":"info"}
+{"message":"Configuration file added. Restarting...","label":null,"level":"info"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/components/Header.astro","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/layouts/Layout.astro","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/components/Gallery.astro","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/components/Feature.astro","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/scripts/animations.ts","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":".agents/skills/ui-ux-pro-max/data/landing.csv","label":"watch","level":"info"}
+{"message":".agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv","label":"watch","level":"info"}
+{"message":".agents/skills/design/references/cip-style-guide.md","label":"watch","level":"info"}
+{"message":".agents/skills/ui-ux-pro-max/data/stacks/svelte.csv","label":"watch","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Failed to update routes via HMR:\n Error: transport was disconnected, cannot call \"fetchModule\"","label":"router","level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Failed to create the dev server app: Failed to load url virtual:astro:server-app (resolved id: /Users/macbook/Folder/Tugas Kuliah/semester 5/kewirausahaan/fotoinid/node_modules/astro/dist/vite-plugin-app/createAstroServerApp.js). Does the file exist?","label":null,"level":"error"}
+{"message":"Failed to resolve dependency: astro > aria-query, present in client 'optimizeDeps.include'","label":"vite","level":"warn"}
+{"message":"Failed to resolve dependency: astro > axobject-query, present in client 'optimizeDeps.include'","label":"vite","level":"warn"}
+{"message":"Failed to resolve dependency: astro > html-escaper, present in client 'optimizeDeps.include'","label":"vite","level":"warn"}
+{"message":"Failed to resolve dependency: astro/runtime/client/dev-toolbar/entrypoint.js, present in client 'optimizeDeps.include'","label":"vite","level":"warn"}
+{"message":"server restarted.","label":"vite","level":"info"}

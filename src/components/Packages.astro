@@ -1,0 +1,90 @@
+---
+const specs = [
+  {
+    title: 'Kualitas File & Hasil Akhir',
+    badge: 'High-Res Deliverables',
+    items: [
+      'Semua foto asli (Original High-Resolution JPEG) diberikan tanpa kompresi',
+      'Pilihan curated foto terbaik yang diedit dan color-graded secara teliti',
+      'Rasio aspek ideal untuk cetak foto fisik (4R, 10R, 12R) maupun media sosial',
+      'Format siap cetak untuk pigura, banner, atau album kenangan',
+    ],
+  },
+  {
+    title: 'Alur Kerja & Pengiriman',
+    badge: 'Seamless Process',
+    items: [
+      'Konsultasi moodboard & referensi gaya foto sebelum hari-H',
+      'Fotografer tiba tepat waktu dan memandu arahan pose secara ramah',
+      'Sneak peek / preview 5 foto terbaik dalam 24 jam pertama',
+      'Penyimpanan aman di Google Drive selama minimal 3 bulan',
+    ],
+  },
+  {
+    title: 'Fleksibilitas Lokasi',
+    badge: 'Outdoor & Indoor',
+    items: [
+      'Area kampus (gedung fakultas, auditorium, rektorat, taman kampus)',
+      'Lokasi pertunjukan terbuka, gedung serbaguna, atau lapangan',
+      'Spot estetik kota, kafe, studio mini, maupun area publik',
+      'Tersedia untuk sesi pagi (golden hour), siang, hingga malam hari',
+    ],
+  },
+];
+---
+
+<section id="packages" class="py-24 bg-[#fffefa] border-b border-[#d8d4db]">
+  <div class="max-w-[1240px] mx-auto px-6 md:px-10">
+    
+    <!-- Section Header -->
+    <div class="border-b border-[#d8d4db] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 reveal-on-scroll">
+      <div>
+        <div class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#773be8] mb-2 flex items-center gap-2">
+          <span>Standar Mutu Layanan</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ee4ca0]"></span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-[#211f24] leading-tight">
+          Transparansi dalam setiap paket.
+        </h2>
+      </div>
+      <p class="text-xs uppercase tracking-wider text-[#77727b] font-medium">
+        Kualitas Terjamin · Tanpa Biaya Tersembunyi
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-on-scroll">
+      {specs.map((spec) => (
+        <div class="p-8 rounded-3xl bg-[#f8f6fa] border border-[#d8d4db] hover:border-[#773be8] hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="inline-block px-3 py-1 rounded-full bg-[#eee8f8] text-[#773be8] text-[10px] font-bold tracking-widest uppercase mb-4 border border-[#cfc3e5]">
+              {spec.badge}
+            </div>
+            <h3 class="text-xl font-bold text-[#211f24] tracking-tight mb-4">
+              {spec.title}
+            </h3>
+            <ul class="space-y-3 text-sm text-[#5a5460]">
+              {spec.items.map((item) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="text-[#773be8] font-bold text-base leading-none">✓</span>
+                  <span class="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-[#e3dfe8]">
+            <a 
+              href="#contact" 
+              class="text-xs font-bold uppercase tracking-wider text-[#773be8] hover:text-[#5821c2] flex items-center gap-1 group"
+            >
+              <span>Pilih paket ini</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

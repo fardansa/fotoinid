@@ -1,0 +1,271 @@
+---
+import { photos } from '../data/photos';
+
+// Filter categories
+const categories = [
+  { key: 'all', label: 'Semua Karya' },
+  { key: 'wisuda', label: 'Wisuda' },
+  { key: 'aksi', label: 'Aksi & Bela Diri' },
+  { key: 'event', label: 'Event & Lapangan' },
+  { key: 'portrait', label: 'Portrait' },
+];
+---
+
+<section id="work" class="py-20 md:py-28 bg-[#f6f4f0] relative">
+  <div class="max-w-[1200px] mx-auto px-6 md:px-8">
+    
+    <!-- Section Header (Editorial Exhibition Style) -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-[#d8d4db] pb-6 mb-8 gap-6">
+      <div>
+        <div class="text-[10px] font-bold uppercase tracking-[0.25em] text-[#773be8] mb-2 flex items-center gap-2">
+          <span>01 — Pameran Karya</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ee4ca0]"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#211f24] leading-[1.05]">
+          Cerita dalam berbagai momen.
+        </h2>
+      </div>
+      
+      <!-- Right Controls: View Switcher -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+        <p class="text-xs text-[#77727b] uppercase tracking-wider font-semibold hidden md:block">
+          Wisuda · Aksi · Portrait · Lapangan
+        </p>
+
+        <!-- View Mode Switcher -->
+        <div class="inline-flex items-center p-1 rounded-full bg-[#e8e4ed] border border-[#d5cfdc] text-[11px] font-bold tracking-wide self-start sm:self-auto">
+          <button 
+            type="button" 
+            id="view-masonry-btn" 
+            class="px-3.5 py-1.5 rounded-full bg-white text-[#211f24] shadow-sm transition-all cursor-pointer flex items-center gap-1.5"
+            title="Tampilan Dinding Galeri Natural"
+          >
+            <span>▥</span>
+            <span>Dinding Galeri</span>
+          </button>
+          <button 
+            type="button" 
+            id="view-editorial-btn" 
+            class="px-3.5 py-1.5 rounded-full text-[#6b6473] hover:text-[#211f24] transition-all cursor-pointer flex items-center gap-1.5"
+            title="Tampilan Kolase Berpasangan"
+          >
+            <span>☷</span>
+            <span>Kolase Spreads</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-12" id="gallery-controls">
+      <div class="flex flex-wrap items-center gap-2" id="gallery-filters">
+        {categories.map((cat, index) => (
+          <button
+            type="button"
+            data-filter={cat.key}
+            class={`px-4 py-2 text-[11px] uppercase font-bold tracking-widest rounded-full transition-all duration-200 cursor-pointer ${
+              index === 0 
+                ? 'bg-[#773be8] text-white shadow-md filter-btn active' 
+                : 'bg-white text-[#514b56] hover:bg-white/90 border border-[#d8d4db] filter-btn hover:border-[#773be8]'
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="text-[11px] font-bold uppercase tracking-wider text-[#77727b] flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#773be8]"></span>
+        <span><strong id="photo-count-badge" class="text-[#211f24]">{photos.length}</strong> Karya Terkurasi</span>
+      </div>
+    </div>
+
+    <!-- MAIN GALLERY CONTAINER:
+         16 unique curated photos, perfectly proportioned:
+         - Portrait photos are framed vertically in 2:3
+         - Landscape photos are framed horizontally in 3:2
+         - Numbers completely removed
+         - Balanced columns with seamless cascade -->
+    <div id="gallery-grid" class="mode-masonry columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+      {photos.map((item) => {
+        const isPortrait = item.aspect === 'portrait';
+        const aspectClass = isPortrait ? 'aspect-[2/3]' : 'aspect-[3/2]';
+
+        return (
+          <div 
+            class="gallery-card group relative overflow-hidden bg-[#1e1a24] cursor-pointer rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 ease-out border border-[#dfdbe3] break-inside-avoid block w-full"
+            data-category={item.category}
+            data-aspect={item.aspect}
+            data-src={`/photo/${item.filename}`}
+            data-title={item.title}
+            data-category-label={item.categoryLabel}
+            data-desc={item.description}
+            tabindex="0"
+            role="button"
+            aria-label={`Lihat karya ${item.title}`}
+          >
+            <!-- Image with proper aspect-ratio container so nothing is cropped awkwardly -->
+            <div class={`w-full overflow-hidden ${aspectClass}`}>
+              <img 
+                src={`/photo/${item.filename}`} 
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover object-center group-hover:scale-[1.035] transition-transform duration-700 ease-out"
+              />
+            </div>
+
+            <!-- Top Left Zoom Badge (Appears on hover) -->
+            <div class="absolute top-3.5 left-3.5 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-xs">
+                ↗
+              </span>
+            </div>
+
+            <!-- Top Right Category Badge (Appears on hover) -->
+            <div class="absolute top-3.5 right-3.5 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/15">
+                {item.categoryLabel}
+              </span>
+            </div>
+
+            <!-- Bottom Floating Caption (Slides up smoothly on hover) -->
+            <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-black/90 via-black/45 to-transparent text-white opacity-0 group-hover:opacity-100 transform translate-y-3 group-hover:translate-y-0 transition-all duration-350 ease-out z-10 flex flex-col justify-end">
+              <div class="text-[10px] text-[#d6b4ff] uppercase tracking-widest font-semibold mb-1">
+                {item.categoryLabel}
+              </div>
+              <h3 class="text-base sm:text-lg font-bold tracking-tight text-white leading-tight">
+                {item.title}
+              </h3>
+              <p class="text-xs text-white/80 mt-1 line-clamp-2 leading-relaxed">
+                {item.description}
+              </p>
+              <div class="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#f0c9ff]">
+                <span>Lihat resolusi penuh</span>
+                <span>↗</span>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Bottom Exhibition Footer Note -->
+    <div class="mt-16 pt-6 border-t border-[#d8d4db] flex flex-col sm:flex-row items-center justify-between text-xs text-[#77727b] gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#773be8]"></span>
+        <span>Dokumentasi autentik karya Foto.in.id tanpa rekayasa.</span>
+      </div>
+      <a href="#contact" class="text-[#773be8] font-bold uppercase tracking-wider hover:text-[#5822b8] flex items-center gap-1 group">
+        <span>Rencanakan sesi fotomu bersama kami</span>
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Scoped Styles for View Mode Overrides -->
+<style>
+  /* Editorial Spreads layout override */
+  #gallery-grid.mode-editorial {
+    display: grid;
+    column-count: unset;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (min-width: 640px) {
+    #gallery-grid.mode-editorial {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    #gallery-grid.mode-editorial {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+    #gallery-grid.mode-editorial .gallery-card[data-aspect="portrait"] {
+      grid-column: span 4;
+    }
+    #gallery-grid.mode-editorial .gallery-card[data-aspect="landscape"] {
+      grid-column: span 6;
+    }
+  }
+</style>
+
+<script>
+  // View Mode Switcher
+  const masonryBtn = document.getElementById('view-masonry-btn');
+  const editorialBtn = document.getElementById('view-editorial-btn');
+  const galleryGrid = document.getElementById('gallery-grid');
+
+  masonryBtn?.addEventListener('click', () => {
+    galleryGrid?.classList.remove('mode-editorial');
+    galleryGrid?.classList.add('mode-masonry', 'columns-1', 'sm:columns-2', 'lg:columns-3', 'space-y-6');
+    masonryBtn.classList.add('bg-white', 'text-[#211f24]', 'shadow-sm');
+    masonryBtn.classList.remove('text-[#6b6473]');
+    editorialBtn?.classList.remove('bg-white', 'text-[#211f24]', 'shadow-sm');
+    editorialBtn?.classList.add('text-[#6b6473]');
+  });
+
+  editorialBtn?.addEventListener('click', () => {
+    galleryGrid?.classList.remove('mode-masonry', 'columns-1', 'sm:columns-2', 'lg:columns-3', 'space-y-6');
+    galleryGrid?.classList.add('mode-editorial');
+    editorialBtn.classList.add('bg-white', 'text-[#211f24]', 'shadow-sm');
+    editorialBtn.classList.remove('text-[#6b6473]');
+    masonryBtn?.classList.remove('bg-white', 'text-[#211f24]', 'shadow-sm');
+    masonryBtn?.classList.add('text-[#6b6473]');
+  });
+
+  // Category Filtering Logic
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.gallery-card');
+  const countBadge = document.getElementById('photo-count-badge');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => {
+        b.classList.remove('bg-[#773be8]', 'text-white', 'shadow-md', 'active');
+        b.classList.add('bg-white', 'text-[#514b56]', 'border', 'border-[#d8d4db]');
+      });
+      btn.classList.add('bg-[#773be8]', 'text-white', 'shadow-md', 'active');
+      btn.classList.remove('bg-white', 'text-[#514b56]');
+
+      const filter = btn.getAttribute('data-filter') || 'all';
+      let count = 0;
+
+      cards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          (card as HTMLElement).style.display = '';
+          count++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (countBadge) countBadge.textContent = String(count);
+    });
+  });
+
+  // Lightbox trigger on click or Enter key
+  cards.forEach((card, index) => {
+    const trigger = () => {
+      const src = card.getAttribute('data-src');
+      const title = card.getAttribute('data-title');
+      const desc = card.getAttribute('data-desc');
+      const cat = card.getAttribute('data-category-label');
+
+      window.dispatchEvent(
+        new CustomEvent('open-lightbox', {
+          detail: { src, title, desc, category: cat, index },
+        })
+      );
+    };
+
+    card.addEventListener('click', trigger);
+    card.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Enter') trigger();
+    });
+  });
+</script>
