@@ -1,27 +1,1557 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Gallery from '../components/Gallery.astro';
-import Feature from '../components/Feature.astro';
-import Services from '../components/Services.astro';
-import About from '../components/About.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+// Foto.in.id — Official Photography Platform (Astro)
 ---
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Foto.in.id — Jasa Fotografi Wisuda, Organisasi & Event Profesional</title>
+<meta name="description" content="Foto.in.id menghadirkan jasa fotografi profesional untuk dokumentasi wisuda sarjana, kebersamaan organisasi, potret personal, dan pertunjukan seni. Setiap momen punya cerita autentik.">
+<meta name="keywords" content="foto wisuda, fotografi wisuda, foto studio wisuda outdoor, jasa foto organisasi, dokumentasi event, potret wisudawati, foto.in.id">
+<meta name="author" content="Foto.in.id">
 
-<Layout 
-  title="foto.in.id — Setiap Momen, Punya Cerita | Fotografi & Dokumentasi"
-  description="Layanan fotografi profesional untuk wisuda, aksi pertunjukan, kegiatan organisasi kampus, dan event penting. Setiap momen punya cerita."
->
-  <Header />
-  <main>
-    <Hero />
-    <Gallery />
-    <Feature />
-    <Services />
-    <About />
-    <Contact />
-  </main>
-  <Footer />
-</Layout>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://foto.in.id/">
+<meta property="og:title" content="Foto.in.id — Setiap Momen Punya Cerita">
+<meta property="og:description" content="Jasa fotografi wisuda, organisasi, event, dan potret personal profesional. Abadikan momen berhargamu dalam visual yang timeless.">
+<meta property="og:image" content="/assets/IMG_2235-hero.jpg">
+
+<!-- Google Fonts: Syne (High-fashion Editorial Display) + Plus Jakarta Sans (Modern Geometric UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+<!-- Structured Data (JSON-LD) for Local Business & Photography SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PhotographyBusiness",
+  "name": "Foto.in.id",
+  "description": "Jasa fotografi profesional untuk wisuda, kegiatan organisasi kampus, event seni, dan potret personal.",
+  "url": "https://foto.in.id",
+  "serviceType": [
+    "Fotografi Wisuda Sarjana",
+    "Dokumentasi Organisasi & Komunitas",
+    "Fotografi Event & Pertunjukan",
+    "Potret Personal & Lifestyle"
+  ],
+  "areaServed": "Indonesia",
+  "sameAs": []
+}
+</script>
+
+<style is:inline>
+:root {
+  --paper: #f6f4f0;
+  --white: #fffefa;
+  --ink: #1e1b22;
+  --muted: #6e6875;
+  --line: #d8d4db;
+  --purple: #773be8;
+  --purple-hover: #5d20ca;
+  --purple-soft: #f1eaff;
+  --pink: #ee4ca0;
+  --dark: #211d29;
+  --soft: #eee9f6;
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, .logo, .portrait-type {
+  font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.04em;
+}
+
+h3, h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: var(--max); margin: auto; padding: 0 30px; }
+
+/* Sticky Header with Smooth Blur on Scroll */
+header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  transition: background 0.45s cubic-bezier(0.19, 1, 0.22, 1), 
+              backdrop-filter 0.45s ease, 
+              -webkit-backdrop-filter 0.45s ease, 
+              border-color 0.45s ease, 
+              box-shadow 0.45s ease;
+  animation: header-fade-in 1.1s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+header.scrolled {
+  background: rgba(23, 21, 26, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+.nav {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.4s ease;
+}
+header.scrolled .nav {
+  border-bottom-color: transparent;
+}
+.logo {
+  font-weight: 850;
+  font-size: 23px;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+.logo span { color: #d6b4ff; }
+nav {
+  display: flex;
+  gap: 36px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+header nav a {
+  position: relative;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+header nav a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #d6b4ff;
+  transition: width 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+header nav a:hover { color: #f1c6ff; }
+header nav a:hover:after { width: 100%; }
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: .18em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+/* Hero Section */
+.hero { position: relative; margin: 0; padding: 0; }
+.hero-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: #17151a;
+  margin: 0;
+}
+.hero-image > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 87%, rgba(0,0,0,.9) 92%, rgba(0,0,0,.55) 97%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 87%, rgba(0,0,0,.9) 92%, rgba(0,0,0,.55) 97%, transparent 100%);
+  animation: hero-img-settle 1.8s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+.hero-image:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(14,11,16,.52), rgba(14,11,16,.14) 20%, transparent 40%);
+}
+.hero-copy {
+  position: absolute;
+  z-index: 2;
+  left: max(30px, calc((100vw - 1180px)/2 + 30px));
+  top: clamp(56px, 11vw, 84px);
+  max-width: min(600px, 58vw);
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.65);
+}
+.hero-copy .eyebrow {
+  color: #f0c9ff;
+  animation: hero-fade-up 1.3s cubic-bezier(0.19, 1, 0.22, 1) 0.15s both;
+}
+.hero-copy h1 {
+  font-size: clamp(24px, 4.8vw, 36px);
+  letter-spacing: -.05em;
+  line-height: 1.02;
+  margin: 12px 0 0;
+  font-weight: 800;
+  max-width: 560px;
+  animation: hero-fade-up 1.4s cubic-bezier(0.19, 1, 0.22, 1) 0.3s both;
+}
+.hero-copy h1 em { font-style: normal; color: #d6b4ff; font-weight: 800; }
+
+.hero-caption {
+  max-width: 1180px;
+  padding: 16px 30px 24px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.hero-caption a {
+  color: var(--purple);
+  font-weight: 700;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.hero-caption a:hover {
+  color: var(--purple-hover);
+  transform: translateY(2px);
+}
+.hero-caption a span {
+  font-size: 17px;
+  display: inline-block;
+  animation: bounce-subtle 2.4s infinite ease-in-out;
+}
+
+/* Photography Card Foundation */
+.photo {
+  position: relative;
+  overflow: hidden;
+  background: #e5e1e8;
+  border: 1px solid var(--line);
+  color: #655e6b;
+  border-radius: 3px;
+}
+.photo.has-image { background: #201b24; color: white; }
+.photo.has-image > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .85s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.photo.has-image:hover > img { transform: scale(1.035); }
+
+/* SECTION 1: SHOWCASE INTRO (ABADIKAN MOMENMU — SILKY GLIDE ANIMATION) */
+.showcase-intro {
+  padding: 56px 0 84px;
+  background: var(--paper);
+  overflow: hidden;
+}
+.portrait-stage {
+  position: relative;
+  padding-top: 18px;
+}
+.portrait-stage-top, .portrait-stage-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.portrait-stage-top {
+  border-top: 1px solid var(--line);
+  padding: 14px 0 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+.portrait-stage-top span:last-child { color: var(--ink); font-weight: 700; }
+
+.portrait-canvas-wrap {
+  position: relative;
+  width: min(58%, 700px);
+  aspect-ratio: 4/5;
+  max-height: 760px;
+  margin: 40px auto 0;
+  overflow: visible;
+}
+.portrait-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  background: #d8d8d4;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 54px rgba(33, 29, 41, 0.12);
+  transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.8s ease;
+}
+.portrait-canvas > img {
+  object-position: center 40%;
+  filter: saturate(.96);
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), filter 0.6s ease;
+}
+.portrait-canvas:hover > img {
+  transform: scale(1.025);
+  filter: saturate(1.03);
+}
+
+/* Split Typography: ABADIKAN (Left) & MOMENMU (Right) — Refined Size & Flanking Layout */
+.portrait-type {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  margin: 0;
+  z-index: 3;
+  pointer-events: none;
+  font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(24px, 7.6vw, 78px);
+  line-height: .95;
+  letter-spacing: -.03em;
+  font-weight: 900;
+  color: var(--ink);
+  user-select: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.portrait-type-left {
+  position: absolute;
+  right: calc(100% - 400px);
+  top: 10%;
+  color: var(--ink);
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.95), 0 2px 8px rgba(255,255,255,0.85);
+  transition: transform 1.55s cubic-bezier(0.19, 1, 0.22, 1), 
+              opacity 1.3s ease, 
+              filter 1.3s ease;
+}
+.portrait-type-right {
+  position: absolute;
+  left: calc(100% - 500px);
+  bottom: 10%;
+  color: var(--purple);
+  text-shadow: 0 6px 28px rgba(119, 59, 232, 0.35);
+  transition: transform 1.55s cubic-bezier(0.19, 1, 0.22, 1) 0.16s, 
+              opacity 1.3s ease 0.16s, 
+              filter 1.3s ease 0.16s;
+}
+
+/* Scroll reveal states for the split typography: Silky smooth glide from outside */
+.scroll-reveal-ready .portrait-type-left {
+  opacity: 0;
+  transform: translateX(-140px);
+  filter: blur(4px);
+}
+.scroll-reveal-ready .portrait-type-right {
+  opacity: 0;
+  transform: translateX(140px);
+  filter: blur(4px);
+}
+.scroll-reveal-ready .portrait-stage.is-visible .portrait-type-left {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+.scroll-reveal-ready .portrait-stage.is-visible .portrait-type-right {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+/* Vertical Rails */
+.portrait-rail {
+  position: absolute;
+  z-index: 4;
+  top: 47%;
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .3em;
+  color: var(--ink);
+  transition: opacity 1.2s ease, transform 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.portrait-rail-left { left: 2px; transform: rotate(180deg); }
+.portrait-rail-right { right: 2px; }
+.scroll-reveal-ready .portrait-rail-left { opacity: 0; transform: rotate(180deg) translateY(28px); }
+.scroll-reveal-ready .portrait-rail-right { opacity: 0; transform: translateY(28px); }
+.scroll-reveal-ready .portrait-stage.is-visible .portrait-rail-left { opacity: 1; transform: rotate(180deg) translateY(0); }
+.scroll-reveal-ready .portrait-stage.is-visible .portrait-rail-right { opacity: 1; transform: translateY(0); }
+
+.portrait-stage-bottom {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0 0;
+  color: var(--muted);
+}
+.portrait-stage-bottom span { color: var(--purple); font-weight: 700; font-size: 11px; }
+.portrait-stage-bottom p {
+  margin: 0;
+  text-align: right;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  max-width: 480px;
+  color: #4a4552;
+  line-height: 1.55;
+}
+
+/* CINEMA SHOWCASE: PERTUNJUKAN MALAM */
+.cinema-showcase { background: var(--paper); padding: 0 0 40px; }
+.cinema-frame {
+  position: relative;
+  aspect-ratio: 16/9;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #171216;
+  color: white;
+}
+.cinema-frame > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  transition: transform 1.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.cinema-frame:hover > img {
+  transform: scale(1.025);
+}
+.cinema-frame:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(38px, 6vw, 78px);
+  background: linear-gradient(180deg, transparent, var(--paper));
+  pointer-events: none;
+  z-index: 1;
+}
+.cinema-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,10,14,.25), transparent 30%, rgba(13,10,14,.1) 48%, rgba(13,10,14,.88) 100%);
+  pointer-events: none;
+}
+.cinema-topline {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px max(30px, calc((100vw - 1180px)/2 + 30px));
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.cinema-title {
+  position: absolute;
+  z-index: 2;
+  right: max(30px, calc((100vw - 1180px)/2 + 30px));
+  bottom: clamp(82px, 8vw, 112px);
+  width: min(520px, 44vw);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+}
+.cinema-title .eyebrow { color: #e2caff; }
+.cinema-title h2 {
+  font-size: clamp(24px, 3.2vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  font-weight: 800;
+  margin: 10px 0 0;
+  max-width: 480px;
+}
+.cinema-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0 26px;
+}
+.cinema-caption p {
+  max-width: 520px;
+  margin: 0;
+  color: #4a4552;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.cinema-caption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--purple);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.cinema-caption a:hover {
+  color: var(--purple-hover);
+  transform: translateX(4px);
+}
+.cinema-caption a span {
+  font-size: 16px;
+  transition: transform .3s ease;
+}
+.cinema-caption a:hover span { transform: translate(3px, 3px); }
+
+/* 01 — PILIHAN KARYA (GALLERY) */
+section { padding: 76px 0; }
+section#work {
+  padding: 40px 0 84px;
+  background: linear-gradient(180deg, var(--paper) 0%, #f0edf4 24%, var(--paper) 100%);
+}
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
+  margin-bottom: 32px;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -.05em;
+  line-height: 1.05;
+}
+.section-head p {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 420px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 8px;
+  gap: 12px 14px;
+  align-items: start;
+}
+.gallery .photo {
+  display: block;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  text-align: left;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  transition: box-shadow 0.45s ease, transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.gallery .photo:hover {
+  box-shadow: 0 16px 36px rgba(33, 29, 41, 0.16);
+  transform: translateY(-4px);
+}
+.gallery .photo > img { object-position: center; }
+
+.gallery .photo .label {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: none;
+  padding: 48px 20px 18px;
+  background: linear-gradient(0deg, rgba(18, 15, 21, 0.94), rgba(18, 15, 21, 0.48) 55%, transparent);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .45s ease, transform .45s cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
+}
+.gallery .photo .label strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.25;
+}
+.gallery .photo .label small {
+  color: #e5cbff;
+  font-size: 9.5px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 4px;
+  display: block;
+}
+.gallery .photo:hover .label,
+.gallery .photo:focus-visible .label {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery .photo:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 2px;
+}
+
+/* Gallery Masonry Layout Spans */
+.gallery .gallery-card--group { grid-column: 1 / span 8; grid-row: 1 / span 26; }
+.gallery .gallery-card--grad-portrait { grid-column: 9 / span 4; grid-row: 1 / span 28; }
+.gallery .gallery-card--action { grid-column: 1 / span 4; grid-row: 28 / span 25; }
+.gallery .gallery-card--martial { grid-column: 5 / span 4; grid-row: 28 / span 18; }
+.gallery .gallery-card--warm { grid-column: 9 / span 4; grid-row: 28 / span 25; }
+.gallery .gallery-card--documentary { grid-column: 1 / span 4; grid-row: 54 / span 24; }
+.gallery .gallery-card--outdoor-grad { grid-column: 5 / span 4; grid-row: 47 / span 24; }
+.gallery .gallery-card--portrait { grid-column: 9 / span 4; grid-row: 54 / span 24; }
+.gallery .gallery-card--extra-group-courtyard { grid-column: 1 / span 6; grid-row: 80 / span 22; }
+.gallery .gallery-card--extra-group-architecture { grid-column: 7 / span 6; grid-row: 80 / span 22; }
+.gallery .gallery-card--extra-family { grid-column: 1 / span 3; grid-row: 103 / span 19; }
+.gallery .gallery-card--extra-music { grid-column: 4 / span 3; grid-row: 103 / span 19; }
+.gallery .gallery-card--extra-grad-green { grid-column: 7 / span 3; grid-row: 103 / span 19; }
+.gallery .gallery-card--extra-grad-stairs { grid-column: 10 / span 3; grid-row: 103 / span 19; }
+.gallery .gallery-card--extra-trio { grid-column: 1 / span 4; grid-row: 124 / span 26; }
+.gallery .gallery-card--extra-batik { grid-column: 5 / span 4; grid-row: 124 / span 26; }
+.gallery .gallery-card--extra-architecture-portrait { grid-column: 9 / span 4; grid-row: 124 / span 26; }
+.gallery .gallery-card--extra-pink-portrait { grid-column: 1 / span 4; grid-row: 151 / span 26; }
+.gallery .gallery-card--extra-expressive { grid-column: 5 / span 4; grid-row: 151 / span 26; }
+.gallery .gallery-card--extra-car { grid-column: 9 / span 4; grid-row: 151 / span 26; }
+.gallery .gallery-card--extra-group-balcony { grid-column: 1 / span 6; grid-row: 178 / span 22; }
+.gallery .gallery-card--extra-community, .gallery .gallery-card--extra-group-community { grid-column: 7 / span 6; grid-row: 178 / span 22; }
+.gallery .gallery-card--group > img { object-position: center 56%; }
+.gallery .gallery-card--martial > img { object-position: center 50%; }
+
+/* 02 — LAYANAN (SERVICES) */
+.services { background: var(--white); padding: 80px 0; }
+.service-list { border-top: 1px solid var(--line); }
+.service {
+  display: grid;
+  grid-template-columns: 70px 1.2fr 1.8fr 40px;
+  gap: 20px;
+  align-items: center;
+  padding: 26px 16px;
+  border-bottom: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.35s ease, 
+              transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), 
+              border-color 0.35s ease, 
+              box-shadow 0.35s ease;
+}
+.service:hover {
+  background: rgba(119, 59, 232, 0.04);
+  transform: translateX(8px);
+  border-color: rgba(119, 59, 232, 0.35);
+  box-shadow: 0 4px 18px rgba(119, 59, 232, 0.08);
+}
+.service .num {
+  font-size: 12px;
+  color: var(--purple);
+  letter-spacing: .12em;
+  font-weight: 700;
+  transition: transform 0.35s ease;
+}
+.service:hover .num { transform: scale(1.12); }
+.service h3 {
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -.035em;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+.service:hover h3 { color: var(--purple); }
+.service p {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.55;
+}
+.service .arrow {
+  color: var(--purple);
+  font-size: 22px;
+  text-align: right;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), color 0.3s ease;
+}
+.service:hover .arrow {
+  transform: translate(6px, -6px);
+  color: var(--purple-hover);
+}
+
+/* 03 — TENTANG (ABOUT & VALUE PILLARS) */
+#about { background: var(--paper); padding: 80px 0; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+.about-grid h2 {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -.065em;
+  margin: 14px 0;
+}
+.about-grid p {
+  max-width: 480px;
+  color: #4a4552;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+
+/* Value Proposition Cards inside About */
+.value-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 50px;
+  padding-top: 38px;
+  border-top: 1px solid var(--line);
+}
+.value-card {
+  background: var(--white);
+  padding: 24px 20px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), 
+              box-shadow 0.4s ease, 
+              border-color 0.35s ease;
+}
+.value-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(119, 59, 232, 0.4);
+  box-shadow: 0 12px 28px rgba(119, 59, 232, 0.08);
+}
+.value-card .val-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--purple);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.value-card h4 {
+  margin: 10px 0 6px;
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+.value-card p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* 04 — HUBUNGI (CONTACT CTA) */
+.contact {
+  background: linear-gradient(135deg, #eee8f8 0%, #e5def4 100%);
+  padding: 76px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.contact-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 36px;
+}
+.contact h2 {
+  font-size: clamp(42px, 6.8vw, 84px);
+  font-weight: 850;
+  line-height: .92;
+  letter-spacing: -.075em;
+  margin: 12px 0;
+}
+.contact p {
+  color: #4a4552;
+  max-width: 420px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+.button {
+  border: 0;
+  background: var(--purple);
+  color: white;
+  padding: 18px 30px;
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(119, 59, 232, 0.32);
+  transition: background 0.35s ease, 
+              transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), 
+              box-shadow 0.35s ease;
+}
+.button:hover {
+  background: var(--purple-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(119, 59, 232, 0.45);
+}
+.button .out {
+  font-size: 17px;
+  transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.button:hover .out {
+  transform: translate(5px, -5px);
+}
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: #f8f5fa;
+  padding: 60px 0 26px;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 36px;
+  padding-bottom: 40px;
+}
+.footer-brand .logo {
+  display: inline-block;
+  color: #fff;
+  font-size: 26px;
+}
+.footer-brand p {
+  max-width: 290px;
+  color: #c8c1ce;
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 12px 0 0;
+}
+.footer-label {
+  font-size: 9.5px;
+  color: #c7a7ff;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin: 5px 0 14px;
+  font-weight: 700;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  font-size: 12.5px;
+}
+.footer-nav a {
+  color: #eee9f4;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+.footer-nav a:hover {
+  color: #d6b4ff;
+  transform: translateX(4px);
+}
+.footer-services {
+  font-size: 12.5px;
+  line-height: 2.1;
+  color: #c8c1ce;
+}
+.footer-bottom {
+  border-top: 1px solid #5c5662;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #c8c1ce;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+.footer-bottom a {
+  transition: color 0.3s ease;
+}
+.footer-bottom a:hover { color: #f0c9ff; }
+
+/* SILKY SCROLL REVEAL ENGINE — GLIDING SMOOTHLY (NO SUDDEN BLINK) */
+.reveal-on-scroll {
+  opacity: 1;
+  transform: none;
+}
+.scroll-reveal-ready .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), 
+              transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.scroll-reveal-ready .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for gallery cards & services */
+.gallery .photo:nth-child(1) { transition-delay: .04s; }
+.gallery .photo:nth-child(2) { transition-delay: .10s; }
+.gallery .photo:nth-child(3) { transition-delay: .16s; }
+.gallery .photo:nth-child(4) { transition-delay: .22s; }
+.gallery .photo:nth-child(5) { transition-delay: .28s; }
+.gallery .photo:nth-child(6) { transition-delay: .34s; }
+.gallery .photo:nth-child(7) { transition-delay: .40s; }
+.gallery .photo:nth-child(8) { transition-delay: .46s; }
+
+.service-list .service:nth-child(1) { transition-delay: .06s; }
+.service-list .service:nth-child(2) { transition-delay: .14s; }
+.service-list .service:nth-child(3) { transition-delay: .22s; }
+.service-list .service:nth-child(4) { transition-delay: .30s; }
+
+.value-pillars .value-card:nth-child(1) { transition-delay: .06s; }
+.value-pillars .value-card:nth-child(2) { transition-delay: .16s; }
+.value-pillars .value-card:nth-child(3) { transition-delay: .26s; }
+.value-pillars .value-card:nth-child(4) { transition-delay: .36s; }
+
+/* KEYFRAME ANIMATIONS */
+@keyframes header-fade-in {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-img-settle {
+  from { transform: scale(1.05); opacity: 0.9; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 960px) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: 12px;
+  }
+  .gallery .photo, .gallery .photo:nth-child(n) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: 4/5;
+    margin: 0 !important;
+  }
+  .gallery .gallery-card--group:nth-child(n),
+  .gallery .gallery-card--extra-group:nth-child(n) {
+    grid-column: span 2 !important;
+    aspect-ratio: 16/10;
+  }
+  .gallery .gallery-card--martial { aspect-ratio: 4/3; }
+  .portrait-canvas-wrap { width: 62%; max-height: 640px; }
+  .portrait-type { font-size: clamp(26px, 3.8vw, 44px); }
+  .portrait-type-left { right: calc(100% - 16px); top: 34%; }
+  .portrait-type-right { left: calc(100% - 16px); bottom: 26%; }
+  .cinema-title { width: min(480px, 54vw); }
+  .value-pillars { grid-template-columns: repeat(2, 1fr); }
+  .service { grid-template-columns: 50px 1fr 1fr 30px; }
+}
+
+@media (max-width: 700px) {
+  .wrap { padding: 0 20px; }
+  .nav { height: 60px; }
+  nav { gap: 16px; font-size: 10px; }
+  .logo { font-size: 20px; }
+  .hero-image { aspect-ratio: 3/2; }
+  .hero-copy { left: 20px; top: 80px; max-width: 80vw; }
+  .hero-copy h1 { font-size: clamp(28px, 6.8vw, 42px); line-height: 1.04; margin-top: 6px; }
+  .hero-copy .eyebrow { font-size: 9.5px; }
+  .hero-caption { padding: 12px 20px 20px; }
+  .section-head { align-items: flex-end; gap: 12px; }
+  .section-head h2 { font-size: 28px; }
+  .section-head p { font-size: 10px; text-align: right; }
+  
+  .gallery { gap: 10px; }
+  .gallery .photo:nth-child(1) { grid-column: span 2 !important; aspect-ratio: 16/10; }
+  .gallery .photo:nth-child(4n) { aspect-ratio: 1/1; }
+  .gallery .photo:nth-child(3n) { aspect-ratio: 4/5; }
+  .gallery .photo .label {
+    padding: 34px 12px 12px;
+    opacity: 1;
+    transform: none;
+    background: linear-gradient(0deg, rgba(18,15,21,.85), rgba(18,15,21,.35) 58%, transparent);
+  }
+  .gallery .photo .label strong { font-size: 13px; }
+  .gallery .photo .label small { font-size: 8px; }
+  
+  .showcase-intro { padding: 36px 0 58px; }
+  .portrait-stage { padding-top: 10px; }
+  .portrait-stage-top { font-size: 8px; letter-spacing: .12em; }
+  .portrait-canvas-wrap { width: 80%; aspect-ratio: 4/5; max-height: none; margin-top: 26px; }
+  .portrait-type { font-size: clamp(20px, 5.5vw, 32px); }
+  .portrait-type-left { right: auto; left: -10px; top: 12%; }
+  .portrait-type-right { left: auto; right: -10px; bottom: 8%; }
+  .scroll-reveal-ready .portrait-type-left { transform: translateX(-80px); }
+  .scroll-reveal-ready .portrait-type-right { transform: translateX(80px); }
+  .portrait-rail { display: none; }
+  .portrait-stage-bottom { align-items: flex-start; padding-top: 14px; }
+  .portrait-stage-bottom span { font-size: 9.5px; }
+  .portrait-stage-bottom p { max-width: 60%; font-size: 11px; line-height: 1.45; }
+  
+  .cinema-showcase { padding-bottom: 24px; }
+  .cinema-frame { aspect-ratio: 4/3; height: auto; min-height: 0; }
+  .cinema-frame > img { object-position: 48% center; }
+  .cinema-topline { padding: 16px 20px; font-size: 8px; letter-spacing: .12em; }
+  .cinema-title { left: 20px; right: 20px; bottom: 44px; width: auto; max-width: 420px; }
+  .cinema-title h2 { font-size: clamp(22px, 5.8vw, 32px); max-width: 340px; }
+  .cinema-caption { align-items: flex-start; flex-direction: column; gap: 14px; padding: 16px 0 20px; }
+  .cinema-caption p { font-size: 12px; }
+  
+  .service { grid-template-columns: 32px 1fr 24px; gap: 12px; padding: 18px 0; }
+  .service h3 { font-size: 18px; }
+  .service p { grid-column: 2; grid-row: 2; font-size: 12px; }
+  .service .arrow { grid-column: 3; grid-row: 1; }
+  
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .about-grid h2 { font-size: 38px; }
+  .value-pillars { grid-template-columns: 1fr; gap: 12px; margin-top: 32px; padding-top: 24px; }
+  
+  .contact-inner { display: block; }
+  .contact .button { margin-top: 18px; }
+  .footer-main { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+
+@media (hover: none) {
+  .gallery .photo .label { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scroll-reveal-ready .reveal-on-scroll,
+  .scroll-reveal-ready .portrait-type-left,
+  .scroll-reveal-ready .portrait-type-right,
+  .scroll-reveal-ready .portrait-rail-left,
+  .scroll-reveal-ready .portrait-rail-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+  .photo.has-image > img,
+  .gallery .photo .label,
+  .cinema-caption a span,
+  .button .out,
+  .service,
+  .value-card {
+    transition: none !important;
+    transform: none !important;
+  }
+  .hero-copy, .hero-copy h1, .hero-copy .eyebrow, header, .hero-image > img {
+    animation: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Global Header / Navigation -->
+<header id="main-header">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Beranda foto.in.id">foto<span>.</span>in<span>.id</span></a>
+    <nav aria-label="Navigasi utama">
+      <a href="#work">Karya</a>
+      <a href="#services">Layanan</a>
+      <a href="#about">Tentang</a>
+      <a href="#contact">Kontak ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" id="top">
+    <figure class="hero-image">
+      <img 
+        src="assets/IMG_2235-hero.jpg" 
+        srcset="assets/IMG_2235.jpg 2000w, assets/IMG_2235-hero.jpg 3200w" 
+        sizes="100vw" 
+        width="3200" 
+        height="2133" 
+        alt="Aksi pemecahan balok di tengah pertunjukan malam - Foto.in.id" 
+        fetchpriority="high"
+      >
+    </figure>
+    <div class="hero-copy">
+      <div class="eyebrow">Foto.in.id · Fotografi Profesional</div>
+      <h1>Setiap momen, <em>punya cerita.</em></h1>
+    </div>
+    <div class="hero-caption">
+      <span>Aksi · Pertunjukan Malam</span>
+      <a href="#work">Jelajahi karya <span>↓</span></a>
+    </div>
+  </section>
+
+  <!-- Showcase Intro: ABADIKAN MOMENMU (Smooth Gliding Entrance from Left & Right) -->
+  <section class="showcase-intro" aria-label="Sorotan dokumentasi wisuda">
+    <div class="wrap">
+      <div class="portrait-stage reveal-on-scroll">
+        <div class="portrait-stage-top">
+          <span>foto.in.id · sorotan momen</span>
+          <span>Wisuda & Dokumentasi Personal</span>
+        </div>
+        
+        <span class="portrait-rail portrait-rail-left" aria-hidden="true">SETIAP LANGKAH, PUNYA CERITA</span>
+        <span class="portrait-rail portrait-rail-right" aria-hidden="true">ABADIKAN · MOMENMU</span>
+        
+        <div class="portrait-canvas-wrap">
+          <figure class="photo has-image portrait-canvas">
+            <img 
+              src="assets/IMG_0707.jpg" 
+              alt="Foto portrait wisudawati berpose di tangga kampus dengan toga dan selempang sarjana" 
+              loading="lazy"
+            >
+          </figure>
+          <!-- Split Typography: ABADIKAN MOMENMU (Smooth glide from Left and Right) -->
+          <h2 class="portrait-type" aria-label="Abadikan Momenmu">
+            <span class="portrait-type-left" aria-hidden="true">ABADIKAN</span>
+            <span class="portrait-type-right" aria-hidden="true">MOMENMU</span>
+          </h2>
+        </div>
+        
+        <div class="portrait-stage-bottom">
+          <span>Abadikan Momen Berhargamu</span>
+          <p>Dari perayaan kelulusan hingga kebersamaan berharga, setiap detik berhak dikenang dalam visual yang hidup dan abadi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cinema Showcase: Night & Cultural Performance -->
+  <section class="cinema-showcase" aria-label="Sorotan pertunjukan malam">
+    <figure class="cinema-frame reveal-on-scroll">
+      <img 
+        src="assets/IMG_2197-feature.jpg" 
+        srcset="assets/IMG_2197.jpg 2000w, assets/IMG_2197-feature.jpg 3000w" 
+        sizes="100vw" 
+        width="3000" 
+        height="2000" 
+        alt="Atraksi nyala api menerangi performer dan penonton di tengah pertunjukan panggung malam" 
+        loading="lazy"
+      >
+      <div class="cinema-shade" aria-hidden="true"></div>
+      <div class="cinema-topline">
+        <span>foto.in.id / momen panggung</span>
+        <span>Pertunjukan Seni · Malam</span>
+      </div>
+      <div class="cinema-title">
+        <div class="eyebrow">Aksi & Pertunjukan Seni</div>
+        <h2>Cahaya yang menghidupkan suasana.</h2>
+      </div>
+    </figure>
+    <div class="wrap">
+      <div class="cinema-caption">
+        <p>Nyala terang api menjadi pusat sorotan, sementara penonton dan atmosfer malam memperkuat narasi emosi pertunjukan.</p>
+        <a href="#work">Jelajahi pilihan karya <span>↘</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 — Pilihan Karya (Gallery with Enhanced SEO Copywriting) -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal-on-scroll">
+        <div>
+          <div class="eyebrow">01 — Portofolio & Pilihan Karya</div>
+          <h2>Dokumentasi Autentik Setiap Momen.</h2>
+        </div>
+        <p>Wisuda sarjana · aksi panggung · foto kelompok organisasi · potret personal</p>
+      </div>
+
+      <div class="gallery">
+        <div class="photo has-image reveal-on-scroll gallery-card--group" tabindex="0" role="group">
+          <img src="assets/group-portrait.jpg" alt="Dokumentasi foto kelompok dan organisasi mahasiswa di tangga kampus" loading="lazy">
+          <div class="label">
+            <strong>Kekompakan dalam Satu Cerita</strong>
+            <small>Foto Kelompok & Organisasi</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--grad-portrait" tabindex="0" role="group">
+          <img src="assets/graduation-portrait.jpg" alt="Foto wisudawati dengan toga sarjana, buket bunga, dan senyum kelulusan" loading="lazy">
+          <div class="label">
+            <strong>Momen Kelulusan Terbaik</strong>
+            <small>Dokumentasi Wisuda</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--action" tabindex="0" role="group">
+          <img src="assets/IMG_0609.jpg" alt="Foto aksi panggung pertunjukan seni teatrikal dengan kibasan kain merah dinamis" loading="lazy">
+          <div class="label">
+            <strong>Dinamika Gerak & Panggung</strong>
+            <small>Pertunjukan Seni</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--martial" tabindex="0" role="group">
+          <img src="assets/IMG_2206.jpg" alt="Dokumentasi atraksi bela diri tradisional malam hari dengan ketajaman aksi tinggi" loading="lazy">
+          <div class="label">
+            <strong>Kekuatan & Ketangkasan</strong>
+            <small>Atraksi Bela Diri</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--warm" tabindex="0" role="group">
+          <img src="assets/graduation-embrace.jpg" alt="Foto haru wisudawati memeluk keluarga tercinta saat perayaan kelulusan" loading="lazy">
+          <div class="label">
+            <strong>Pelukan Penuh Rasa Syukur</strong>
+            <small>Wisuda Keluarga</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--documentary" tabindex="0" role="group">
+          <img src="assets/IMG_0381.jpg" alt="Dokumentasi prosesi pemotretan wisuda dari sudut pandang fotografer profesional" loading="lazy">
+          <div class="label">
+            <strong>Perspektif di Balik Lensa</strong>
+            <small>Proses Dokumentasi</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--outdoor-grad" tabindex="0" role="group">
+          <img src="assets/IMG_0795.jpg" alt="Foto portrait wisudawati outdoor dengan pencahayaan alami dan toga lengkap" loading="lazy">
+          <div class="label">
+            <strong>Potret Wisuda Outdoor</strong>
+            <small>Wisuda Personal</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--portrait" tabindex="0" role="group">
+          <img src="assets/IMG_2179.jpg" alt="Foto potret personal profesional di ruang terbuka dengan nuansa hangat" loading="lazy">
+          <div class="label">
+            <strong>Karakter Alami & Personal</strong>
+            <small>Potret Individu</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-group gallery-card--extra-group-courtyard" tabindex="0" role="group">
+          <img src="assets/portfolio-group-courtyard.jpg" alt="Foto kelompok mahasiswa berpose di halaman terbuka kampus" loading="lazy">
+          <div class="label">
+            <strong>Jejak Perjalanan Bersama</strong>
+            <small>Dokumentasi Angkatan</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-group gallery-card--extra-group-architecture" tabindex="0" role="group">
+          <img src="assets/portfolio-group-architecture.jpg" alt="Foto kelompok organisasi di depan arsitektur bangunan modern" loading="lazy">
+          <div class="label">
+            <strong>Sinergi Komunitas & Lembaga</strong>
+            <small>Organisasi Mahasiswa</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-family" tabindex="0" role="group">
+          <img src="assets/portfolio-graduation-detail.jpg" alt="Foto detail makro selempang wisuda dengan bordir nama dan gelar kelulusan" loading="lazy">
+          <div class="label">
+            <strong>Detail Bersejarah Kelulusan</strong>
+            <small>Atribut Wisuda</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-music" tabindex="0" role="group">
+          <img src="assets/portfolio-piano-moment.jpg" alt="Foto monokrom musisi memainkan piano klasik di atas panggung acara" loading="lazy">
+          <div class="label">
+            <strong>Harmoni & Ekspresi Musik</strong>
+            <small>Dokumentasi Seni</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-grad-green" tabindex="0" role="group">
+          <img src="assets/portfolio-graduation-portrait-green.jpg" alt="Foto wisudawati duduk tenang di taman kampus dengan buket bunga kelulusan" loading="lazy">
+          <div class="label">
+            <strong>Keteguhan Langkah Sarjana</strong>
+            <small>Wisuda Personal</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-grad-stairs" tabindex="0" role="group">
+          <img src="assets/portfolio-graduation-stairs.jpg" alt="Foto wisudawati berdiri anggun di tangga ikonik kampus membawa ijazah" loading="lazy">
+          <div class="label">
+            <strong>Menatap Masa Depan</strong>
+            <small>Wisuda Outdoor</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-trio" tabindex="0" role="group">
+          <img src="assets/portfolio-group-trio.jpg" alt="Foto sahabat wisuda berpose ceria di tangga luar gedung universitas" loading="lazy">
+          <div class="label">
+            <strong>Persahabatan Tanpa Batas</strong>
+            <small>Wisuda Sahabat</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-batik" tabindex="0" role="group">
+          <img src="assets/portfolio-batik-portrait.jpg" alt="Foto potret formal pria mengenakan kemeja batik berlatar belakang modern" loading="lazy">
+          <div class="label">
+            <strong>Pesona Elegan Wastra Batik</strong>
+            <small>Potret Formal</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-architecture-portrait" tabindex="0" role="group">
+          <img src="assets/portfolio-architectural-portrait.jpg" alt="Foto komposisi arsitektural potret wanita di antara lengkungan struktur gedung" loading="lazy">
+          <div class="label">
+            <strong>Simfoni Ruang & Komposisi</strong>
+            <small>Artistic Portrait</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-pink-portrait" tabindex="0" role="group">
+          <img src="assets/portfolio-bright-portrait.jpg" alt="Foto potret wanita tersenyum ramah dan natural di bawah cahaya matahari pagi" loading="lazy">
+          <div class="label">
+            <strong>Kehangatan Senyum Alami</strong>
+            <small>Lifestyle Portrait</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-expressive" tabindex="0" role="group">
+          <img src="assets/portfolio-expressive-portrait.jpg" alt="Foto ekspresi ceria dan tawa lepas dalam sesi pemotretan outdoor" loading="lazy">
+          <div class="label">
+            <strong>Spontanitas & Tawa Lepas</strong>
+            <small>Ekspresi Personal</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-car" tabindex="0" role="group">
+          <img src="assets/portfolio-graduation-car.jpg" alt="Foto wisudawati tersenyum bahagia di jendela mobil dengan selempang kelulusan" loading="lazy">
+          <div class="label">
+            <strong>Selebrasi Perjalanan Baru</strong>
+            <small>Momen Wisuda</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-group gallery-card--extra-group-balcony" tabindex="0" role="group">
+          <img src="assets/portfolio-group-balcony.jpg" alt="Foto sekelompok panitia dan peserta organisasi berjejer di balkon gedung" loading="lazy">
+          <div class="label">
+            <strong>Solidaritas & Dedikasi</strong>
+            <small>Dokumentasi Organisasi</small>
+          </div>
+        </div>
+
+        <div class="photo has-image reveal-on-scroll gallery-card--extra-group gallery-card--extra-group-community gallery-card--extra-community" tabindex="0" role="group">
+          <img src="assets/portfolio-community-group.jpg" alt="Foto kelompok mahasiswi berpose ceria bersama di halaman luar kampus" loading="lazy">
+          <div class="label">
+            <strong>Kebersamaan Sahabat Kampus</strong>
+            <small>Potret Komunitas</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — LAYANAN (SERVICES) -->
+  <section id="services" class="services">
+    <div class="wrap">
+      <div class="section-head reveal-on-scroll">
+        <div>
+          <div class="eyebrow">02 — Layanan Fotografi</div>
+          <h2>Untuk Momen yang Berarti.</h2>
+        </div>
+        <p>Paket fotografi fleksibel dengan arahan gaya profesional</p>
+      </div>
+
+      <div class="service-list reveal-on-scroll">
+        <div class="service" tabindex="0">
+          <span class="num">01</span>
+          <h3>Wisuda Sarjana</h3>
+          <p>Dokumentasi wisuda personal, keluarga, hingga sesi outdoor sahabat dengan arahan pose natural.</p>
+          <span class="arrow">↗</span>
+        </div>
+
+        <div class="service" tabindex="0">
+          <span class="num">02</span>
+          <h3>Organisasi & Kampus</h3>
+          <p>Foto kepengurusan, inaugurasi, annual photo book, dan arsip kegiatan dinamis lembaga.</p>
+          <span class="arrow">↗</span>
+        </div>
+
+        <div class="service" tabindex="0">
+          <span class="num">03</span>
+          <h3>Event & Pertunjukan</h3>
+          <p>Liputan konser, teater seni, festival malam, dan acara penting dengan ketajaman aksi tinggi.</p>
+          <span class="arrow">↗</span>
+        </div>
+
+        <div class="service" tabindex="0">
+          <span class="num">04</span>
+          <h3>Custom Photography</h3>
+          <p>Punya konsep khusus atau proyek kreatif sendiri? Diskusikan kebutuhan visualmu bersama kami.</p>
+          <span class="arrow">↗</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — TENTANG (ABOUT & KEY VALUES) -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid reveal-on-scroll">
+        <div>
+          <div class="eyebrow">03 — Filosofi Foto.in.id</div>
+          <h2>Fotografi yang memberi ruang pada cerita.</h2>
+        </div>
+        <div>
+          <p>Foto.in.id hadir dari keyakinan bahwa foto terbaik bukan sekadar pose kaku di depan kamera, melainkan narasi emosi otentik—dari tawa lepas perayaan sarjana hingga gemuruh energi panggung pertunjukan.</p>
+        </div>
+      </div>
+
+      <!-- Value Pillars / Kredibilitas -->
+      <div class="value-pillars reveal-on-scroll">
+        <div class="value-card">
+          <div class="val-num">Pilar 01</div>
+          <h4>Komposisi Bernarasi</h4>
+          <p>Menangkap emosi dan keaslian suasana tanpa keterpaksaan pose.</p>
+        </div>
+        <div class="value-card">
+          <div class="val-num">Pilar 02</div>
+          <h4>Warna Khas & Alami</h4>
+          <p>Color grading estetik yang timeless, bersih, dan memikat mata.</p>
+        </div>
+        <div class="value-card">
+          <div class="val-num">Pilar 03</div>
+          <h4>Arahan Pose Ramah</h4>
+          <p>Nyaman untuk pemula agar setiap orang tampil percaya diri.</p>
+        </div>
+        <div class="value-card">
+          <div class="val-num">Pilar 04</div>
+          <h4>File Cepat & Resolusi Penuh</h4>
+          <p>Pengiriman cloud rapi, file jernih siap cetak dan siap unggah.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — HUBUNGI (CONTACT CTA) -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-inner reveal-on-scroll">
+      <div>
+        <div class="eyebrow">04 — Konsultasi & Pemesanan</div>
+        <h2>Rencanakan<br>ceritamu sekarang.</h2>
+        <p>Diskusikan jadwal wisuda, konsep foto kelompok, atau liputan event kamu. Kami siap mengabadikan momen berhargamu.</p>
+      </div>
+      <a 
+        href="https://wa.me/6285161057720?text=Halo%20Foto.in.id,%20saya%20tertarik%20untuk%20konsultasi%20jadwal%20dan%20paket%20fotografi." 
+        class="button" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label="Hubungi tim Foto.in.id melalui WhatsApp"
+      >
+        Hubungi via WhatsApp <span class="out">↗</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- Global Footer -->
+<footer>
+  <div class="wrap">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="logo" href="#top">foto.in.id</a>
+        <p>Mengabadikan setiap momentum berharga dengan narasi visual yang abadi.</p>
+      </div>
+      <div>
+        <div class="footer-label">Jelajahi</div>
+        <nav class="footer-nav" aria-label="Navigasi footer">
+          <a href="#work">Karya</a>
+          <a href="#services">Layanan</a>
+          <a href="#about">Tentang</a>
+          <a href="#contact">Kontak</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-label">Fokus Fotografi</div>
+        <div class="footer-services">
+          Dokumentasi Wisuda Sarjana<br>
+          Organisasi & Komunitas Kampus<br>
+          Event Musik & Pertunjukan Seni
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} Foto.in.id · Semua Hak Dilindungi.</span>
+      <a href="#top">Kembali ke atas ↑</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Animation & Performance Script -->
+<script is:inline>
+(() => {
+  // Sticky Navbar Blur Observer
+  const header = document.getElementById("main-header");
+  const updateNav = () => {
+    if (window.scrollY > 40) {
+      header?.classList.add("scrolled");
+    } else {
+      header?.classList.remove("scrolled");
+    }
+  };
+  window.addEventListener("scroll", updateNav, { passive: true });
+  updateNav();
+
+  // Scroll Reveal Observer with Gentle Glide Threshold
+  if (!("IntersectionObserver" in window)) return;
+  const items = document.querySelectorAll(".reveal-on-scroll");
+  if (!items.length) return;
+
+  document.documentElement.classList.add("scroll-reveal-ready");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -40px 0px", threshold: 0.12 });
+
+  items.forEach((item) => observer.observe(item));
+})();
+</script>
+
+</body>
+</html>
